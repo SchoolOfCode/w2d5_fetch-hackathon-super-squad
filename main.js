@@ -1,16 +1,23 @@
 console.log("It's dictionary time.");
 
-async function getQuote() {
-  const response = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en_GB/hello");
+async function changeWordInput(wordInput) {
+  const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en_GB/${wordInput}`);
   const data = await response.json();
   console.log(data);
 }
 
-getQuote();
+changeWordInput();
+
+const audioButton = documentquerySelector(".Audio button")
+audioButton.addEventListener("click", onClickSound)
+function onClickSound(){
+
+}
 
 
-Function
-Function
+
+function 
+
 appended 
 what the buttons do 
 eventlisteners
