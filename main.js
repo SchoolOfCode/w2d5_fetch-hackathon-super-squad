@@ -1,8 +1,11 @@
 console.log("It's dictionary time.");
-//function onClickSound() {}
+
+// function onClickSound() {
+//   return data.phonetics.audio;
+// }
 
 function wordToInput() {
-  let wordInput = document.querySelector(".wordSearch").innerText;
+  let wordInput = document.querySelector(".wordSearch").data;
   console.log(wordInput);
   changeWordInput(wordInput);
 }
@@ -10,14 +13,18 @@ function wordToInput() {
 async function changeWordInput(wordInput) {
   console.log(wordInput);
   const response = await fetch(
-    "https://api.dictionaryapi.dev/api/v2/entries/en_GB/" + wordInput
+    `https://api.dictionaryapi.dev/api/v2/entries/en_GB/${wordInput}`
   );
   const data = await response.json();
+  const newli = document.createElement("li");
+  const list = document.querySelector("ul");
+  list.appendChild(newli);
+  newli.innerText = data;
   console.log(data);
 }
 
-// const audioButton = document.querySelector(".Audio button");
-// audioButton.addEventListener("click", onClickSound);
+//const audioButton = document.querySelector(".Audio button");
+//audioButton.addEventListener("click", onClickSound);
 
 const wordButton = document.querySelector(".wordSearch");
 wordButton.addEventListener("click", wordToInput);
