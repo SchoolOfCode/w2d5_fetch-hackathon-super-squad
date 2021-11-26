@@ -2,23 +2,24 @@ console.log("It's dictionary time.");
 //function onClickSound() {}
 
 function wordToInput() {
-  let wordInput = document.getElementById("#Word Input").value;
+  let wordInput = document.querySelector(".wordSearch").innerText;
   console.log(wordInput);
-  changeWordInput();
+  changeWordInput(wordInput);
 }
 
 async function changeWordInput(wordInput) {
+  console.log(wordInput);
   const response = await fetch(
-    `https://api.dictionaryapi.dev/api/v2/entries/en_GB/${wordInput}`
+    "https://api.dictionaryapi.dev/api/v2/entries/en_GB/" + wordInput
   );
   const data = await response.json();
-  console.log(response);
+  console.log(data);
 }
 
 // const audioButton = document.querySelector(".Audio button");
 // audioButton.addEventListener("click", onClickSound);
 
-const wordButton = document.querySelector(".Word search");
+const wordButton = document.querySelector(".wordSearch");
 wordButton.addEventListener("click", wordToInput);
 
 //Theres a search box, you can search any word.
